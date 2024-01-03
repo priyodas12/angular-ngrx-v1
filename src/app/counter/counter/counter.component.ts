@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CounterOutputComponent } from '../counter-output/counter-output.component';
 import { CounterButtonsComponent } from '../counter-buttons/counter-buttons.component';
-
+import { Input } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-counter',
@@ -14,23 +15,29 @@ export class CounterComponent {
 
   count: number = 0;
 
-  constructor() {
-
+  constructor(private store: Store<{ counterData: { countValue: number } }>) {
+    console.log("# Const # CounterComponent >> " + store);
   }
 
-  onIncrement() {
-    this.count++;
-    console.log("CounterComponent.increment");
+  ngOnInit() {
+    this.store.select('counterData').subscribe(data => {
+      this.count = data.countValue;
+    })
   }
 
-  onDecrement() {
-    this.count--;
-    console.log("CounterComponent.decrement");
-  }
+  // onIncrement() {
+  //   this.count++;
+  //   console.log("CounterComponent.increment");
+  // }
 
-  onReset() {
-    this.count = 0;
-    console.log("CounterComponent.reset");
-  }
+  // onDecrement() {
+  //   this.count--;
+  //   console.log("CounterComponent.decrement");
+  // }
+
+  // onReset() {
+  //   this.count = 0;
+  //   console.log("CounterComponent.reset");
+  // }
 
 }
