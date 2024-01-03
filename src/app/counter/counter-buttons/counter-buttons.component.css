@@ -1,0 +1,10 @@
+.container{
+    padding:10px;
+    margin:10px;
+    background-color: rgb(236, 255, 127);
+    border-radius: 10px;;
+}
+
+.counter-btn{
+    margin:5px;
+}
