@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CounterOutputComponent } from '../counter-output/counter-output.component';
 import { CounterButtonsComponent } from '../counter-buttons/counter-buttons.component';
-import { Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 @Component({
