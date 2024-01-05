@@ -5,7 +5,7 @@
 // the reducer creates a new state object based on the previous state and the action.
 
 
-import { decrementAction, incrementAction, resetAction, customIncrementAction } from "./counter.action";
+import { decrementAction, incrementAction, resetAction, customIncrementAction, customDecrementAction } from "./counter.action";
 import { initialState } from "./counter.state"
 import { createReducer, on } from "@ngrx/store";
 
@@ -43,6 +43,16 @@ export const counterReducer = createReducer(initialState,
             return {
                 ...state,
                 countValue: Number(state.countValue) + Number(action.customCounterData)
+            }
+        }
+    ),
+    on(
+        customDecrementAction,
+        (state, action) => {
+            console.log(typeof action.customCounterData);
+            return {
+                ...state,
+                countValue: Number(state.countValue) > 0 ? Number(state.countValue) - Number(action.customCounterData) : 0
             }
         }
     )

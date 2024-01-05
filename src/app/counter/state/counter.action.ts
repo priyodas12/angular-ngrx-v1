@@ -9,6 +9,7 @@ export const incrementAction = createAction('[Count] increment', props<{ counter
 export const decrementAction = createAction('[Count] decrement', props<{ counterData: number }>());
 export const resetAction = createAction('[Count] reset', props<{ counterData: number }>());
 export const customIncrementAction = createAction('customIncrementAction', props<{ customCounterData: number }>());
+export const customDecrementAction = createAction('customDecrementAction', props<{ customCounterData: number }>());
 
 console.log(`Action created: ${incrementAction.type}`);
 console.log(`Action created: ${decrementAction.type}`);

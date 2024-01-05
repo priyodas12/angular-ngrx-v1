@@ -2,7 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 import { CounterState } from '../state/counter.state';
 import { Store } from '@ngrx/store';
-import { customIncrementAction } from '../state/counter.action';
+import { customDecrementAction, customIncrementAction } from '../state/counter.action';
 
 @Component({
   selector: 'app-custom-counter-input',
@@ -13,20 +13,23 @@ import { customIncrementAction } from '../state/counter.action';
 })
 export class CustomCounterInputComponent {
 
-  customCounterVal!: number;
+  customCounterValAdd!: number;
+  customCounterValSub!: number;
 
   constructor(private store: Store<{ counterData: CounterState }>) {
 
   }
 
-  addToValue1(val: any) {
-    this.customCounterVal = val;
-    console.log(this.customCounterVal);
+  //on click event data dispatching.
+  onSubtruction(val: any) {
+    this.customCounterValSub = val;
+    this.store.dispatch(customDecrementAction({ customCounterData: this.customCounterValAdd }))
+    console.log(this.customCounterValSub);
   }
 
-  addToValue2() {
-    this.store.dispatch(customIncrementAction({ customCounterData: this.customCounterVal }))
-    console.log(this.customCounterVal);
+  onAddition() {
+    this.store.dispatch(customIncrementAction({ customCounterData: this.customCounterValAdd }))
+    console.log(this.customCounterValAdd);
   }
 
 }
