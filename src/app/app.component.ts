@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
     CounterComponent,
     CounterButtonsComponent,
     CounterOutputComponent,
-    FormsModule  
+    FormsModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

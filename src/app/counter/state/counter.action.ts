@@ -5,10 +5,10 @@
 
 import { createAction, props } from "@ngrx/store";
 
-export const increment = createAction('[Count] increment', props<{ counterData: number }>());
-export const decrement = createAction('[Count] decrement', props<{ counterData: number }>());
-export const reset = createAction('[Count] reset', props<{ counterData: number }>());
+export const incrementAction = createAction('[Count] increment', props<{ counterData: number }>());
+export const decrementAction = createAction('[Count] decrement', props<{ counterData: number }>());
+export const resetAction = createAction('[Count] reset', props<{ counterData: number }>());
 
-console.log(`Action created: ${increment.type}`);
-console.log(`Action created: ${decrement.type}`);
-console.log(`Action created: ${reset.type}`);
+console.log(`Action created: ${incrementAction.type}`);
+console.log(`Action created: ${decrementAction.type}`);
+console.log(`Action created: ${resetAction.type}`);

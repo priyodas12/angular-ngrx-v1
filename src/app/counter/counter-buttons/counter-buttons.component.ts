@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { decrement, increment, reset } from '../state/counter.action';
+import { decrementAction, incrementAction, resetAction } from '../state/counter.action';
+import { CounterState } from '../state/counter.state';
 
 @Component({
   selector: 'app-counter-buttons',
@@ -15,7 +16,7 @@ export class CounterButtonsComponent {
   //push the store into action epi-center where the event will occur.
   //counterData: same as  StoreModule.forRoot({ <counterData>: counterReducer }) app.config.ts
   //{ countValue: number } same as initialState in counter.state.ts
-  constructor(private store: Store<{ counterData: { countValue: number } }>) {
+  constructor(private store: Store<{ counterData: CounterState }>) {
     console.log("# Const # CounterButtonsComponent >> " + store);
   }
 
@@ -32,20 +33,20 @@ export class CounterButtonsComponent {
     //step-5
     //on click event will trigger action<increment> which will lead to reducer on(increment) event.
     const counterData = 0;
-    this.store.dispatch(increment({ counterData }))
+    this.store.dispatch(incrementAction({ counterData }))
   }
 
   onDecrement() {
     console.log("CounterButtonsComponent.decrement");
     //this.decrement.emit();
     const counterData = 0;
-    this.store.dispatch(decrement({ counterData }))
+    this.store.dispatch(decrementAction({ counterData }))
   }
 
   onReset() {
     console.log("CounterButtonsComponent.reset");
     //this.reset.emit();
     const counterData = 0;
-    this.store.dispatch(reset({ counterData }))
+    this.store.dispatch(resetAction({ counterData }))
   }
 }
