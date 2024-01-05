@@ -1,0 +1,6 @@
+<div class="custom-input">
+    <input type="text" name="inputBtnTxt" #inputBtnTxt placeholder="enter value">
+     <button class="btn btn-primary" (click)="addToValue1(inputBtnTxt.value)">Add To Counter</button><br><br>
+    <input type="text" name="inputBtnTxt" placeholder="enter value" [(ngModel)]="customCounterVal">
+    <button class="btn btn-primary" (click)="addToValue2()">Add To Counter</button>
+</div>

@@ -8,6 +8,7 @@ import { createAction, props } from "@ngrx/store";
 export const incrementAction = createAction('[Count] increment', props<{ counterData: number }>());
 export const decrementAction = createAction('[Count] decrement', props<{ counterData: number }>());
 export const resetAction = createAction('[Count] reset', props<{ counterData: number }>());
+export const customIncrementAction = createAction('customIncrementAction', props<{ customCounterData: number }>());
 
 console.log(`Action created: ${incrementAction.type}`);
 console.log(`Action created: ${decrementAction.type}`);

@@ -4,11 +4,12 @@ import { CounterButtonsComponent } from '../counter-buttons/counter-buttons.comp
 import { Store } from '@ngrx/store';
 import { CounterState } from '../state/counter.state';
 import { HttpClientModule } from '@angular/common/http';
+import { CustomCounterInputComponent } from '../custom-counter-input/custom-counter-input.component';
 
 @Component({
   selector: 'app-counter',
   standalone: true,
-  imports: [CounterOutputComponent, CounterButtonsComponent,HttpClientModule],
+  imports: [CounterOutputComponent, CounterButtonsComponent,HttpClientModule,CustomCounterInputComponent],
   templateUrl: './counter.component.html',
   styleUrl: './counter.component.css'
 })
