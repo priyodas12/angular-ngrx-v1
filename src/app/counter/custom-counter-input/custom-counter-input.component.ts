@@ -3,6 +3,7 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { CounterState } from '../state/counter.state';
 import { Store } from '@ngrx/store';
 import { customCounterTextAction, customDecrementAction, customIncrementAction } from '../state/counter.action';
+import { getCounterText } from '../state/counter.selector';
 
 @Component({
   selector: 'app-custom-counter-input',
@@ -23,9 +24,9 @@ export class CustomCounterInputComponent {
   }
 
   ngOnInit() {
-    this.store.select('counterData').subscribe(data => {
+    this.store.select(getCounterText).subscribe(counterText => {
       console.log("CountText Observable called!");
-      this.countText = data.countText;
+      this.countText = counterText;
     })
   }
 

@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { CounterState } from '../state/counter.state';
 import { CommonModule } from '@angular/common';
+import { getCounterValue } from '../state/counter.selector';
 
 @Component({
   selector: 'app-counter-output',
@@ -54,10 +55,10 @@ export class CounterOutputComponent {
     //   console.log("Subscribed :" + data.countText);
     // })
 
-    this.counterDataSubscription = this.store.select('counterData').subscribe(
-      data => {
+    this.counterDataSubscription = this.store.select(getCounterValue).subscribe(
+      countValue => {
         console.log("CountValue Observable called!");
-        this.counterOp = data.countValue;
+        this.counterOp = countValue;
       }
     );
 

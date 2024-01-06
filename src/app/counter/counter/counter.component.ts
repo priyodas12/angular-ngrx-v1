@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { CounterState } from '../state/counter.state';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomCounterInputComponent } from '../custom-counter-input/custom-counter-input.component';
+import { getCounterValue } from '../state/counter.selector';
 
 @Component({
   selector: 'app-counter',
@@ -22,8 +23,8 @@ export class CounterComponent {
   }
 
   ngOnInit() {
-    this.store.select('counterData').subscribe(data => {
-      this.count = data.countValue;
+    this.store.select(getCounterValue).subscribe(counterValue => {
+      this.count = counterValue;
     })
   }
 
