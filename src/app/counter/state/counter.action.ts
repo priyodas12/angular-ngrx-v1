@@ -11,6 +11,8 @@ export const resetAction = createAction('[Count] reset', props<{ counterData: nu
 export const customIncrementAction = createAction('customIncrementAction', props<{ customCounterData: number }>());
 export const customDecrementAction = createAction('customDecrementAction', props<{ customCounterData: number }>());
 
-console.log(`Action created: ${incrementAction.type}`);
-console.log(`Action created: ${decrementAction.type}`);
-console.log(`Action created: ${resetAction.type}`);
+export const customCounterTextAction = createAction('customCounterTextAction', props<{ customCounterText: string }>());
+
+// console.log(`Action created: ${incrementAction.type}`);
+// console.log(`Action created: ${decrementAction.type}`);
+// console.log(`Action created: ${resetAction.type}`);

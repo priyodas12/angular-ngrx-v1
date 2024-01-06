@@ -2,5 +2,8 @@
     <input type="text" name="inputBtnTxt" #inputBtnTxt placeholder="enter value">
      <button class="btn btn-primary" (click)="onSubtruction(inputBtnTxt.value)">Custom Substraction</button><br><br>
     <input type="text" name="inputBtnTxt" placeholder="enter value" [(ngModel)]="customCounterValAdd">
-    <button class="btn btn-primary" (click)="onAddition()">Custom Addition</button>
+    <button class="btn btn-primary" (click)="onAddition()">Custom Addition</button><br><br>
+
+    <p>Count Display: {{countText}}</p>
+    <button class="btn btn-primary" (click)="onCounterTextChange()">Change Text</button>
 </div>

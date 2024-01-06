@@ -17,7 +17,7 @@ export class CounterButtonsComponent {
   //counterData: same as  StoreModule.forRoot({ <counterData>: counterReducer }) app.config.ts
   //{ countValue: number } same as initialState in counter.state.ts
   constructor(private store: Store<{ counterData: CounterState }>) {
-    console.log("# Const # CounterButtonsComponent >> " + store);
+    //console.log("# Const # CounterButtonsComponent >> " + store);
   }
 
 
@@ -28,7 +28,7 @@ export class CounterButtonsComponent {
   // @Output() reset: EventEmitter<number> = new EventEmitter<number>();
 
   onIncrement() {
-    console.log("CounterButtonsComponent.increment");
+    // console.log("CounterButtonsComponent.increment");
     //this.increment.emit();
     //step-5
     //on click event will trigger action<increment> which will lead to reducer on(increment) event.
@@ -37,14 +37,14 @@ export class CounterButtonsComponent {
   }
 
   onDecrement() {
-    console.log("CounterButtonsComponent.decrement");
+    //console.log("CounterButtonsComponent.decrement");
     //this.decrement.emit();
     const counterData = 0;
     this.store.dispatch(decrementAction({ counterData }))
   }
 
   onReset() {
-    console.log("CounterButtonsComponent.reset");
+    //console.log("CounterButtonsComponent.reset");
     //this.reset.emit();
     const counterData = 0;
     this.store.dispatch(resetAction({ counterData }))

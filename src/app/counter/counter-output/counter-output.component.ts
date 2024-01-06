@@ -16,15 +16,17 @@ export class CounterOutputComponent {
   //@Input()
   counterOp!: number;
 
-  conterDataSubscription!: Subscription;
+  counterDataSubscription!: Subscription;
 
   counterData1$!: Observable<CounterState>;
+
+  //counterStateLocal: CounterState ;
 
   //step-6: to view/as observer we have to attach store.
   //counterData: same as  StoreModule.forRoot({ <counterData>: counterReducer }) app.config.ts
   //{ countValue: number } same as initialState in counter.state.ts
-  constructor(private store: Store<{ counterData: { countValue: number } }>) {
-    console.log("# Const # CounterOutputComponent >> " + store);
+  constructor(private store: Store<{ counterData: CounterState }>) {
+    //console.log("# Const # CounterOutputComponent >> " + store);
   }
 
 
@@ -41,35 +43,47 @@ export class CounterOutputComponent {
     //     this.counterOp = data.countValue;
     //   })
 
-    this.counterData1$ = this.store.select('counterData');
+    // this.counterData1$ = this.store.select('counterData');
 
-    this.counterData1$.subscribe(data => {
-      console.log("Subscribed :" + data.countValue);
-    })
+    // this.counterData1$.subscribe(data => {
+    //   console.log("Subscribed :" + data.countValue);
+    // })
 
-    console.log("<< CounterOutputComponent >> ngOnInit:: " + this.counterOp);
+    // this.counterData1$.subscribe(data => {
+    //   this.countText = data.countText;
+    //   console.log("Subscribed :" + data.countText);
+    // })
+
+    this.counterDataSubscription = this.store.select('counterData').subscribe(
+      data => {
+        console.log("CountValue Observable called!");
+        this.counterOp = data.countValue;
+      }
+    );
+
+    //console.log("<< CounterOutputComponent >> ngOnInit:: " + this.counterOp);
   }
 
   ngOnChanges() {
-    console.log("<< CounterOutputComponent >> ngOnChanges:: " + this.counterOp);
+    //console.log("<< CounterOutputComponent >> ngOnChanges:: " + this.counterOp);
   }
 
   ngAfterViewInit() {
-    console.log("<< CounterOutputComponent >> ngAfterViewInit:: " + this.counterOp);
+    //console.log("<< CounterOutputComponent >> ngAfterViewInit:: " + this.counterOp);
   }
 
   ngAfterViewChecked() {
-    console.log("<< CounterOutputComponent >> ngAfterViewChecked:: " + this.counterOp);
+    //console.log("<< CounterOutputComponent >> ngAfterViewChecked:: " + this.counterOp);
   }
 
   DoCheck() {
-    console.log("<< CounterOutputComponent >> DoCheck:: " + this.counterOp);
+    //console.log("<< CounterOutputComponent >> DoCheck:: " + this.counterOp);
   }
 
   ngOnDestroy() {
     console.log("<< ngOnDestroy >> ngOnDestroy:: " + this.counterOp);
-    if (this.conterDataSubscription) {
-      this.conterDataSubscription.unsubscribe();
+    if (this.counterDataSubscription) {
+      this.counterDataSubscription.unsubscribe();
     }
   }
 }

@@ -2,7 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 import { CounterState } from '../state/counter.state';
 import { Store } from '@ngrx/store';
-import { customDecrementAction, customIncrementAction } from '../state/counter.action';
+import { customCounterTextAction, customDecrementAction, customIncrementAction } from '../state/counter.action';
 
 @Component({
   selector: 'app-custom-counter-input',
@@ -16,20 +16,33 @@ export class CustomCounterInputComponent {
   customCounterValAdd!: number;
   customCounterValSub!: number;
 
+  countText!: string;
+
   constructor(private store: Store<{ counterData: CounterState }>) {
 
+  }
+
+  ngOnInit() {
+    this.store.select('counterData').subscribe(data => {
+      console.log("CountText Observable called!");
+      this.countText = data.countText;
+    })
   }
 
   //on click event data dispatching.
   onSubtruction(val: any) {
     this.customCounterValSub = val;
     this.store.dispatch(customDecrementAction({ customCounterData: this.customCounterValAdd }))
-    console.log(this.customCounterValSub);
+    //console.log(this.customCounterValSub);
   }
 
   onAddition() {
     this.store.dispatch(customIncrementAction({ customCounterData: this.customCounterValAdd }))
-    console.log(this.customCounterValAdd);
+    //console.log(this.customCounterValAdd);
+  }
+
+  onCounterTextChange() {
+    this.store.dispatch(customCounterTextAction({ customCounterText: 'Test 1' }))
   }
 
 }

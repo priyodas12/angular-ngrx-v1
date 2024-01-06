@@ -9,7 +9,7 @@ import { CustomCounterInputComponent } from '../custom-counter-input/custom-coun
 @Component({
   selector: 'app-counter',
   standalone: true,
-  imports: [CounterOutputComponent, CounterButtonsComponent,HttpClientModule,CustomCounterInputComponent],
+  imports: [CounterOutputComponent, CounterButtonsComponent, HttpClientModule, CustomCounterInputComponent],
   templateUrl: './counter.component.html',
   styleUrl: './counter.component.css'
 })
@@ -18,7 +18,7 @@ export class CounterComponent {
   count: number = 0;
   //refering with interface instead of raw i.e object counterData format.
   constructor(private store: Store<{ counterData: CounterState }>) {
-    console.log("# Const # CounterComponent >> " + store);
+    //console.log("# Const # CounterComponent >> " + store);
   }
 
   ngOnInit() {
